@@ -4,7 +4,7 @@ import pickle
 
 
 app = Flask(__name__)
-model = pickle.load(open('email_open_model.sav','rb'))
+#model = pickle.load(open('email_open_model.sav','rb'))
 
 
 @app.route('/')
