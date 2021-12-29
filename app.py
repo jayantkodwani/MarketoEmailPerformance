@@ -1,40 +1,26 @@
-<!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
-<head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  
-</head>
+import numpy as np
+from flask import Flask, request, jsonify, render_template, url_for
+import pickle
 
-<body>
- <div class="login">
-	<h1>Jaipur's Air Quality Index Index</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="interview_score3" placeholder="Maximum Wind Speed" required="required" /><br>
-    	<input type="text" name="experience" placeholder="Maximum Temperature" required="required" /><br>
-        <input type="text" name="test_score" placeholder="Minimum Temperature" required="required" /><br>
-        <input type="text" name="interview_score5" placeholder="Average Temperature" required="required" /><br>
-        <input type="text" name="interview_score6" placeholder="Average Wind Speed" required="required" /><br>
+app = Flask(__name__)
 
-       
+@app.route('/')
+def home():
+    #return 'Hello World'
+    return render_template('home.html')
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+@app.route('/predict',methods = ['POST'])
+def predict():
+    return render_template('home.html')   
 
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
+@app.route('/predict_api',methods=['POST'])
+def predict_api():
+    '''
+    For direct API calls trought request
+    '''
+        output = 'Hello'
+    return jsonify(output)
 
-</body>
-</html>
+if __name__ == '__main__':
+    app.run(debug=True)
