@@ -26,39 +26,7 @@
         </select>
         <br>
 
-    <script>    
-var subjectObject = {
-  "Data and AI": {
-    "Innovate with AI": [],
-    "Win with Analytics": []
     
-      },
- "Infrastructure": {
-    "Azure Migration and Modernization": [],
-    "Azure Hybrid and Infrastructure": [],
-    "Migrate Windows and SQL Server": [],
-    "Modernize VDI to Azure Virtual Desktop": []
-  }
-}
-window.onload = function() {
-  var solutionareaSel = document.getElementById("solutionarea");
-  var playSel = document.getElementById("play");
- 
-  for (var x in subjectObject) {
-    solutionareaSel.options[solutionareaSel.options.length] = new Option(x, x);
-  }
-  solutionareaSel.onchange = function() {
-    //empty Chapters- and Topics- dropdowns
-    playSel.length = 1;
-   
-    //display correct values
-    for (var y in subjectObject[this.value]) {
-      playSel.options[playSel.options.length] = new Option(y, y);
-    }
-  }
-
-}
-</script>
 </head>   
 <body>
 
