@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'emailperformance'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1F89608BD2EF4589808B02C6BC6603B0 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A41E0B43B83F4EB69294FD4B13A7BD79 }}
