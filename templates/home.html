@@ -3,7 +3,7 @@
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
 <head>
   <meta charset="UTF-8">
-  <title>ML API</title>
+  <title>Marketo Email Performance Predictor</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
@@ -14,17 +14,70 @@
 
 <body>
  <div class="login">
-	<h1>Jaipur's Air Quality Index Index</h1>
+	<h1>Marketo Email Performance Forecast</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="interview_score3" placeholder="Maximum Wind Speed" required="required" /><br>
-    	<input type="text" name="experience" placeholder="Maximum Temperature" required="required" /><br>
-        <input type="text" name="test_score" placeholder="Minimum Temperature" required="required" /><br>
-        <input type="text" name="interview_score5" placeholder="Average Temperature" required="required" /><br>
-        <input type="text" name="interview_score6" placeholder="Average Wind Speed" required="required" /><br>
-
+      
        
+        <label for="Area">Select marketing area:</label>
+        <select name="Area" id="Area"> 
+        <option value="ANZ">ANZ</option>
+        </select>
+        <br>
+
+    <script>    
+var subjectObject = {
+  "Data and AI": {
+    "Innovate with AI": [],
+    "Win with Analytics": []
+    
+      },
+ "Infrastructure": {
+    "Azure Migration and Modernization": [],
+    "Azure Hybrid and Infrastructure": [],
+    "Migrate Windows and SQL Server": [],
+    "Modernize VDI to Azure Virtual Desktop": []
+  }
+}
+window.onload = function() {
+  var solutionareaSel = document.getElementById("solutionarea");
+  var playSel = document.getElementById("play");
+ 
+  for (var x in subjectObject) {
+    solutionareaSel.options[solutionareaSel.options.length] = new Option(x, x);
+  }
+  solutionareaSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    playSel.length = 1;
+   
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      playSel.options[playSel.options.length] = new Option(y, y);
+    }
+  }
+
+}
+</script>
+</head>   
+<body>
+
+
+
+<form name="form1" id="form1" action="/action_page.php">
+Solution Area: <select name="solutionarea" id="solutionarea">
+    <option value="" selected="selected">Select subject</option>
+  </select>
+  <br>
+Play: <select name="play" id="play">
+    <option value="" selected="selected">Please select subject first</option>
+  </select>
+  <br><br>
+
+<label for="countemail">Enter # of emails to be deployed:</label>  <input type="text" name="Sent" placeholder="# of emails planned for deployment" required="required" /><br>
+
+  
+        <br>
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
